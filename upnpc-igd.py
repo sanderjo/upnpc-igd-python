@@ -93,9 +93,9 @@ List of UPNP devices found on the network :
 
 Found valid IGD : http://192.168.1.1:1900/ipc
 Local LAN ip address : 192.168.1.104
-ExternalIPAddress = 83.128.242.254
+ExternalIPAddress = 11.128.242.254
 InternalIP:Port = 192.168.1.104:12345
-external 83.128.242.254:12345 TCP is redirected to internal 192.168.1.104:12345
+external 11.128.242.254:12345 TCP is redirected to internal 192.168.1.104:12345
 '''
 
 		
@@ -111,10 +111,10 @@ List of UPNP devices found on the network :
 
 Found valid IGD : http://192.168.1.1:1900/ipc
 Local LAN ip address : 192.168.1.104
-ExternalIPAddress = 83.128.242.254
+ExternalIPAddress = 11.128.242.254
 AddPortMapping(8080, 8080, 192.168.1.104) failed with code 501 (Action Failed)
 InternalIP:Port = 192.168.1.111:8080
-external 83.128.242.254:8080 TCP is redirected to internal 192.168.1.111:8080
+external 11.128.242.254:8080 TCP is redirected to internal 192.168.1.111:8080
 '''
 
 '''
