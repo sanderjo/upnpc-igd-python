@@ -56,66 +56,30 @@ class upnpIGD:
 					deletesuccess = True
 		return deletesuccess
 
-command = 'upnpc'
-#command = '/usr/bin/upnpc'
-#command = '/home/sander/git/miniupnp/miniupnpc/upnpc-static'
-mysetting = upnpIGD(command)
-if mysetting.igdfound:
-	print "My IP is " + mysetting.myip
-	print "My external IP is " + mysetting.myexternalip
 
-	print "setting ... " + str(mysetting.setRedirect(4444))
-	print "delete ... " + str(mysetting.deleteRedirect(4444))
+def main():
+	# Set where the upnpc can be found:
+	command = 'upnpc'
+	#command = '/usr/bin/upnpc'
+	#command = '/home/sander/git/miniupnp/miniupnpc/upnpc-static'
+
+	mysetting = upnpIGD(command)
+
+	if mysetting.igdfound:
+		print "My IP is " + mysetting.myip
+		print "My external IP is " + mysetting.myexternalip
+
+		print "setting ... " + str(mysetting.setRedirect(4444))
+		print "delete ... " + str(mysetting.deleteRedirect(4444))
+
+if __name__ == '__main__':
+	main()
 
 ######### END
 
 
-'''
-def setRedirect(port):
 
-	redirectsuccess = True
-	inblock = False
-	cmd = 'upnpc -r ' + str(port) + ' tcp'
-	for thisline in os.popen(cmd).readlines():
-		thisline = thisline.strip()
-		if thisline.find('Local LAN ip address')>=0:
-			# Local LAN ip address : 192.168.1.111
-			myip = thisline.split(':')[1].replace(' ','')
-			print "My IP is " + myip
-		if thisline.startswith('AddPortMapping') or thisline.startswith('No IGD UPnP Device found on the network'):
-			# Not good:
-			# AddPortMapping(8080, 8080, 192.168.1.104) failed with code 501 (Action Failed)
-			# No IGD UPnP Device found on the network !
-			print "Mapping did not happen: " + thisline
-			redirectsuccess = False
-		if thisline.startswith('external'):
-			if redirectsuccess:
-				print "succesful mapping " + thisline.split()[7]
-			else:
-				print "external already mapped to " + thisline.split()[7]
-	return redirectsuccess
-'''
-
-'''
-def deleteRedirect(port):
-	deletesuccess = False	# default
-	cmd = 'upnpc -d ' + str(port) + ' tcp'
-	for thisline in os.popen(cmd).readlines():
-		thisline = thisline.strip()
-		#print thisline
-		if thisline.startswith('UPNP_DeletePortMapping'):
-			#print thisline
-			if thisline.split()[-1] == '0':
-				deletesuccess = True
-	return deletesuccess
-'''
-
-#print setRedirect('4444')
-#print setRedirect(4444)
-
-#print deleteRedirect(4444)
-
-		 
+#### Examples of upnpc calls		 
 
 '''
 ### succesful redirect
